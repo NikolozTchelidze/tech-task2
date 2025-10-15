@@ -1,0 +1,88 @@
+<div class="p-4 max-h-[80vh] flex flex-col">
+  <!-- Header -->
+  <div class="flex justify-between items-center mb-4 pb-4 border-b">
+    <h2 class="text-xl font-bold text-gray-800 flex items-center">
+      <mat-icon class="mr-2 text-blue-600">history</mat-icon>
+      Bet History
+    </h2>
+    <div class="flex gap-2">
+      <button mat-icon-button 
+              class="text-red-600 hover:bg-red-50"
+              (click)="clearHistory()"
+              matTooltip="Clear History"
+              [disabled]="totalBets() === 0">
+        <mat-icon>delete_sweep</mat-icon>
+      </button>
+      <button mat-icon-button 
+              class="text-gray-600 hover:bg-gray-50"
+              (click)="close()"
+              matTooltip="Close">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  @if (totalBets() === 0) {
+    <!-- Empty State -->
+    <div class="flex flex-col items-center justify-center flex-1 text-center py-12">
+      <div class="text-6xl mb-4">📊</div>
+      <h3 class="text-xl font-semibold text-gray-700 mb-2">No Bet History</h3>
+      <p class="text-gray-500 mb-6">Your betting history will appear here once you place your first bet.</p>
+      <button mat-raised-button 
+              color="primary"
+              (click)="close()">
+        Start Betting
+      </button>
+    </div>
+  } @else {
+    <!-- Statistics Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
+      <div class="bg-blue-50 p-3 rounded-lg text-center">
+        <div class="text-2xl font-bold text-blue-600">{{ totalBets() }}</div>
+        <div class="text-sm text-blue-700">Total Bets</div>
+      </div>
+      <div class="bg-gray-50 p-3 rounded-lg text-center">
+        <div class="text-2xl font-bold text-gray-600">${{ totalStake().toFixed(2) }}</div>
+        <div class="text-sm text-gray-700">Total Stake</div>
+      </div>
+      <div class="bg-green-50 p-3 rounded-lg text-center">
+        <div class="text-2xl font-bold text-green-600">${{ totalWinnings().toFixed(2) }}</div>
+        <div class="text-sm text-green-700">Total Winnings</div>
+      </div>
+    </div>
+
+
+    <!-- Bet History List -->
+    <div class="space-y-3 overflow-y-auto flex-1 pr-2">
+      @for (bet of betHistory(); track bet.id) {
+        <div class="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+          <!-- Bet Header -->
+          <div class="mb-3">
+            <h3 class="font-semibold text-gray-800 mb-1">{{ bet.eventTitle }}</h3>
+            <p class="text-sm text-gray-600">{{ formatDate(bet.placedAt) }}</p>
+          </div>
+
+          <!-- Bet Details -->
+          <div class="grid grid-cols-2 gap-4 text-sm">
+            <div>
+              <div class="text-gray-600">Selection</div>
+              <div class="font-medium text-blue-600">{{ bet.selection | titlecase }}</div>
+            </div>
+            <div>
+              <div class="text-gray-600">Odds</div>
+              <div class="font-medium">{{ bet.odds }}</div>
+            </div>
+            <div>
+              <div class="text-gray-600">Stake</div>
+              <div class="font-medium">${{ (bet.stake || 0).toFixed(2) }}</div>
+            </div>
+            <div>
+              <div class="text-gray-600">Potential Winnings</div>
+              <div class="font-medium text-green-600">${{ (bet.potentialWinnings || 0).toFixed(2) }}</div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>

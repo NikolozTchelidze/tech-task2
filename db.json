@@ -1,0 +1,190 @@
+{
+  "events": [
+    {
+      "title": "Manchester United vs Liverpool",
+      "description": "Premier League clash between two historic rivals at Old Trafford",
+      "sport": "football",
+      "homeTeam": "Manchester United",
+      "awayTeam": "Liverpool",
+      "startTime": "2024-01-15T10:00",
+      "status": "upcoming",
+      "odds": {
+        "home": 3.09,
+        "away": 3.21,
+        "draw": 2.74
+      },
+      "id": "1",
+      "updatedAt": "2025-10-12T10:49:32.551Z",
+      "isLive": false
+    },
+    {
+      "id": "2",
+      "title": "Lakers vs Warriors",
+      "description": "NBA Western Conference showdown at Crypto.com Arena",
+      "sport": "basketball",
+      "homeTeam": "Los Angeles Lakers",
+      "awayTeam": "Golden State Warriors",
+      "startTime": "2024-01-16T20:30:00.000Z",
+      "status": "live",
+      "odds": {
+        "home": 1.85,
+        "away": 1.95
+      },
+      "isLive": true
+    },
+    {
+      "id": "3",
+      "title": "Djokovic vs Nadal",
+      "description": "French Open Final - Clay court tennis classic",
+      "sport": "tennis",
+      "homeTeam": "Novak Djokovic",
+      "awayTeam": "Rafael Nadal",
+      "startTime": "2024-01-17T14:00:00.000Z",
+      "status": "upcoming",
+      "odds": {
+        "home": 1.75,
+        "away": 2.05
+      },
+      "isLive": false
+    },
+    {
+      "id": "4",
+      "title": "Brazil vs Argentina",
+      "description": "Volleyball World Championship semi-final",
+      "sport": "volleyball",
+      "homeTeam": "Brazil",
+      "awayTeam": "Argentina",
+      "startTime": "2024-01-18T18:00:00.000Z",
+      "status": "upcoming",
+      "odds": {
+        "home": 1.6,
+        "away": 2.3
+      },
+      "isLive": false
+    },
+    {
+      "id": "6",
+      "title": "Celtics vs Heat",
+      "description": "NBA Eastern Conference rivalry game",
+      "sport": "basketball",
+      "homeTeam": "Boston Celtics",
+      "awayTeam": "Miami Heat",
+      "startTime": "2024-01-20T19:00:00.000Z",
+      "status": "upcoming",
+      "odds": {
+        "home": 1.7,
+        "away": 2.15
+      },
+      "isLive": false
+    },
+    {
+      "id": "7",
+      "title": "Federer vs Murray",
+      "description": "Wimbledon Championship match",
+      "sport": "tennis",
+      "homeTeam": "Roger Federer",
+      "awayTeam": "Andy Murray",
+      "startTime": "2024-01-21T16:00:00.000Z",
+      "status": "upcoming",
+      "odds": {
+        "home": 1.9,
+        "away": 1.9
+      },
+      "isLive": false
+    },
+    {
+      "id": "8",
+      "title": "Italy vs Poland",
+      "description": "Volleyball Nations League final",
+      "sport": "volleyball",
+      "homeTeam": "Italy",
+      "awayTeam": "Poland",
+      "startTime": "2024-01-22T19:30:00.000Z",
+      "status": "upcoming",
+      "odds": {
+        "home": 1.8,
+        "away": 2
+      },
+      "isLive": false
+    },
+    {
+      "id": "9",
+      "title": "Real Madrid vs Barcelona",
+      "description": "El Clasico - La Liga showdown at Santiago Bernabeu",
+      "sport": "football",
+      "homeTeam": "Real Madrid",
+      "awayTeam": "Barcelona",
+      "startTime": "2024-01-23T20:00:00.000Z",
+      "status": "upcoming",
+      "odds": {
+        "home": 2.2,
+        "draw": 3.3,
+        "away": 3.1
+      },
+      "isLive": false
+    },
+    {
+      "id": "10",
+      "title": "Nets vs Bucks",
+      "description": "NBA regular season game at Barclays Center",
+      "sport": "basketball",
+      "homeTeam": "Brooklyn Nets",
+      "awayTeam": "Milwaukee Bucks",
+      "startTime": "2024-01-24T20:00:00.000Z",
+      "status": "upcoming",
+      "odds": {
+        "home": 2,
+        "away": 1.8
+      },
+      "isLive": false
+    },
+    {
+      "title": "Man City 2 vs New Castle 2",
+      "description": "Man City 2 vs New Castle  2",
+      "sport": "football",
+      "homeTeam": "Man City 2",
+      "awayTeam": "New Castle 2",
+      "startTime": "2025-10-13T06:30",
+      "status": "live",
+      "odds": {
+        "home": 1.5,
+        "away": 3,
+        "draw": 2.7
+      },
+      "id": "9b7f",
+      "updatedAt": "2025-10-12T11:35:43.265Z",
+      "isLive": true
+    },
+    {
+      "id": "5e67",
+      "title": "Inter vs Milan",
+      "description": "Italy league",
+      "sport": "football",
+      "homeTeam": "Inter",
+      "awayTeam": "Milan",
+      "startTime": "2025-10-15T05:58",
+      "status": "upcoming",
+      "odds": {
+        "home": 1.5,
+        "away": 2.3,
+        "draw": 3.5
+      }
+    },
+    {
+      "id": "ac18",
+      "title": "Everton Vs New Castle",
+      "description": "Premier league",
+      "sport": "football",
+      "homeTeam": "Everton",
+      "awayTeam": "New Castle",
+      "startTime": "2025-10-15T05:59",
+      "status": "live",
+      "odds": {
+        "home": 1.2,
+        "away": 2.4,
+        "draw": 3.5
+      }
+    }
+  ],
+  "bets": []
+}

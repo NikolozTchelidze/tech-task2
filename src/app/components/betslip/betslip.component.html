@@ -1,0 +1,47 @@
+<div class="p-4 max-h-[80vh] flex flex-col">
+  @if (events().length === 0) {
+    <p class="text-gray-500 text-center">No bets selected</p>
+  } @else {
+    <div class="space-y-2 overflow-y-auto flex-1 pr-2">
+      @for (bet of events(); track bet.event.id) {
+        <div class="border p-3 rounded relative">
+          <button (click)="removeBet(bet.event.id)"
+                  class="absolute top-2 right-2 w-6 h-6 flex items-center justify-center text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-colors text-sm">
+            ×
+          </button>
+          <h3 class="font-medium pr-8">{{ bet.event.homeTeam }} vs {{ bet.event.awayTeam }}</h3>
+          <p class="text-sm text-gray-600">
+            Home: {{bet.event.odds.home}} | 
+            @if (bet.event.odds.draw) {
+              Draw: {{bet.event.odds.draw}} | 
+            }
+            Away: {{bet.event.odds.away}}
+          </p>
+          <p class="text-sm font-medium text-blue-600 mt-1">
+            Selected: {{ bet.selection | titlecase }} - {{ bet.event.odds[bet.selection] }}
+          </p>
+        </div>
+      }
+    </div>
+    <div class="mt-4 pt-4 border-t">
+      <input type="number" 
+             class="mt-2 w-full p-2 border rounded"
+             placeholder="Amount"
+             [(ngModel)]="amount"
+             (ngModelChange)="onAmountChange()">
+      <p class="text-sm font-medium text-green-600 mt-2">
+        Potential Winnings: {{ potentialWinnings().toFixed(2) }}
+      </p>
+    </div>
+    <div class="mt-4 pt-4 border-t">
+      <button mat-raised-button
+              color="primary" 
+              class="w-full"
+              (click)="placeBet()"
+              [disabled]="events().length === 0 || amount() === 0">
+              >
+        Place Bet
+      </button> 
+    </div> 
+  }
+</div>

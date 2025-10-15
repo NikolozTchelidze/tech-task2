@@ -1,0 +1,129 @@
+<div class="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+  <div class="w-full max-w-md bg-white rounded-lg shadow-lg p-6">
+    <h1 class="text-2xl font-bold text-center mb-6">Create New Event</h1>
+    
+    <form [formGroup]="eventForm" class="space-y-4">
+      <!-- Title -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Event Title</label>
+        <input type="text" formControlName="title" placeholder="Enter event title"
+               class="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500"
+               [class.border-red-500]="eventForm.get('title')?.invalid && eventForm.get('title')?.touched">
+        <div *ngIf="eventForm.get('title')?.invalid && eventForm.get('title')?.touched" class="text-red-500 text-sm mt-1">
+          <span *ngIf="eventForm.get('title')?.errors?.['required']">Required</span>
+          <span *ngIf="eventForm.get('title')?.errors?.['minlength']">Min 2 characters</span>
+          <span *ngIf="eventForm.get('title')?.errors?.['maxlength']">Max 100 characters</span>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Description</label>
+        <textarea formControlName="description" placeholder="Enter description" rows="2"
+                  class="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500"></textarea>
+      </div>
+
+      <!-- Sport -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Sport Type</label>
+        <select formControlName="sport" class="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500"
+                [class.border-red-500]="eventForm.get('sport')?.invalid && eventForm.get('sport')?.touched">
+          <option value="">Select sport</option>
+          <option value="football">Football</option>
+          <option value="basketball">Basketball</option>
+          <option value="tennis">Tennis</option>
+          <option value="volleyball">Volleyball</option>
+        </select>
+        <div *ngIf="eventForm.get('sport')?.invalid && eventForm.get('sport')?.touched" class="text-red-500 text-sm mt-1">
+          Sport type is required
+        </div>
+      </div>
+
+      <!-- Teams -->
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="block text-sm font-medium mb-1">Home Team</label>
+          <input type="text" formControlName="homeTeam" placeholder="Home team"
+                 class="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500"
+                 [class.border-red-500]="eventForm.get('homeTeam')?.invalid && eventForm.get('homeTeam')?.touched">
+          <div *ngIf="eventForm.get('homeTeam')?.invalid && eventForm.get('homeTeam')?.touched" class="text-red-500 text-sm mt-1">
+            Required
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">Away Team</label>
+          <input type="text" formControlName="awayTeam" placeholder="Away team"
+                 class="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500"
+                 [class.border-red-500]="eventForm.get('awayTeam')?.invalid && eventForm.get('awayTeam')?.touched">
+          <div *ngIf="eventForm.get('awayTeam')?.invalid && eventForm.get('awayTeam')?.touched" class="text-red-500 text-sm mt-1">
+            Required
+          </div>
+        </div>
+      </div>
+
+      <!-- Start Time -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Start Time</label>
+        <input type="datetime-local" formControlName="startTime"
+               class="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500"
+               [class.border-red-500]="eventForm.get('startTime')?.invalid && eventForm.get('startTime')?.touched">
+        <div *ngIf="eventForm.get('startTime')?.invalid && eventForm.get('startTime')?.touched" class="text-red-500 text-sm mt-1">
+          Start time is required
+        </div>
+      </div>
+
+      <!-- Status -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Status</label>
+        <select formControlName="status" class="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500"
+                [class.border-red-500]="eventForm.get('status')?.invalid && eventForm.get('status')?.touched">
+          <option value="">Select status</option>
+          <option value="upcoming">Upcoming</option>
+          <option value="live">Live</option>
+          <option value="finished">Finished</option>
+        </select>
+        <div *ngIf="eventForm.get('status')?.invalid && eventForm.get('status')?.touched" class="text-red-500 text-sm mt-1">
+          Status is required
+        </div>
+      </div>
+
+      <!-- Odds -->
+      <div formGroupName="odds" class="grid grid-cols-3 gap-3">
+        <div>
+          <label class="block text-sm font-medium mb-1">Home</label>
+          <input type="number" formControlName="home" placeholder="1.50" step="0.01" min="1.01" max="100"
+                 class="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500"
+                 [class.border-red-500]="eventForm.get('odds.home')?.invalid && eventForm.get('odds.home')?.touched">
+          <div *ngIf="eventForm.get('odds.home')?.invalid && eventForm.get('odds.home')?.touched" class="text-red-500 text-sm mt-1">
+            Invalid odds
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">Away</label>
+          <input type="number" formControlName="away" placeholder="2.50" step="0.01" min="1.01" max="100"
+                 class="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500"
+                 [class.border-red-500]="eventForm.get('odds.away')?.invalid && eventForm.get('odds.away')?.touched">
+          <div *ngIf="eventForm.get('odds.away')?.invalid && eventForm.get('odds.away')?.touched" class="text-red-500 text-sm mt-1">
+            Invalid odds
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">Draw</label>
+          <input type="number" formControlName="draw" placeholder="3.20" step="0.01" min="1.01" max="100"
+                 class="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500"
+                 [class.border-red-500]="eventForm.get('odds.draw')?.invalid && eventForm.get('odds.draw')?.touched">
+          <div *ngIf="eventForm.get('odds.draw')?.invalid && eventForm.get('odds.draw')?.touched" class="text-red-500 text-sm mt-1">
+            Invalid odds
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" 
+      (click)="createEvent()"
+              class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md transition-colors">
+        Create Event
+      </button>
+    </form>
+  </div>
+</div>
