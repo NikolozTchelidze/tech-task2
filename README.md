@@ -17,6 +17,12 @@ Once the server is running, open your browser and navigate to `http://localhost:
 To start the JSON Server backend, run:
 
 ```bash
+npx json-server db.json --port 3000
+```
+
+Or alternatively:
+
+```bash
 npm run server
 ```
 
