@@ -122,69 +122,80 @@
         "away": 3.1
       },
       "isLive": false
-    },
-    {
-      "id": "10",
-      "title": "Nets vs Bucks",
-      "description": "NBA regular season game at Barclays Center",
-      "sport": "basketball",
-      "homeTeam": "Brooklyn Nets",
-      "awayTeam": "Milwaukee Bucks",
-      "startTime": "2024-01-24T20:00:00.000Z",
-      "status": "upcoming",
-      "odds": {
-        "home": 2,
-        "away": 1.8
-      },
-      "isLive": false
-    },
-    {
-      "title": "Man City 2 vs New Castle 2",
-      "description": "Man City 2 vs New Castle  2",
-      "sport": "football",
-      "homeTeam": "Man City 2",
-      "awayTeam": "New Castle 2",
-      "startTime": "2025-10-13T06:30",
-      "status": "live",
-      "odds": {
-        "home": 1.5,
-        "away": 3,
-        "draw": 2.7
-      },
-      "id": "9b7f",
-      "updatedAt": "2025-10-12T11:35:43.265Z",
-      "isLive": true
-    },
-    {
-      "id": "5e67",
-      "title": "Inter vs Milan",
-      "description": "Italy league",
-      "sport": "football",
-      "homeTeam": "Inter",
-      "awayTeam": "Milan",
-      "startTime": "2025-10-15T05:58",
-      "status": "upcoming",
-      "odds": {
-        "home": 1.5,
-        "away": 2.3,
-        "draw": 3.5
-      }
-    },
-    {
-      "id": "ac18",
-      "title": "Everton Vs New Castle",
-      "description": "Premier league",
-      "sport": "football",
-      "homeTeam": "Everton",
-      "awayTeam": "New Castle",
-      "startTime": "2025-10-15T05:59",
-      "status": "live",
-      "odds": {
-        "home": 1.2,
-        "away": 2.4,
-        "draw": 3.5
-      }
     }
   ],
-  "bets": []
+  "bets": [
+    {
+      "id": "6",
+      "eventId": "2",
+      "eventTitle": "Lakers vs Warriors",
+      "selection": "home",
+      "odds": 1.85,
+      "stake": 10,
+      "placedAt": "2025-10-15T14:49:55.773Z"
+    },
+    {
+      "id": "19",
+      "eventId": "1",
+      "eventTitle": "Manchester United vs Liverpool",
+      "selection": "draw",
+      "odds": 2.74,
+      "stake": 10,
+      "placedAt": "2025-10-15T14:49:55.773Z"
+    },
+    {
+      "id": "13",
+      "eventId": "1",
+      "eventTitle": "Manchester United vs Liverpool",
+      "selection": "draw",
+      "odds": 2.74,
+      "stake": 10,
+      "placedAt": "2025-10-15T14:52:44.968Z"
+    },
+    {
+      "id": "6",
+      "eventId": "2",
+      "eventTitle": "Lakers vs Warriors",
+      "selection": "home",
+      "odds": 1.85,
+      "stake": 10,
+      "placedAt": "2025-10-15T14:52:44.968Z"
+    },
+    {
+      "id": "1",
+      "eventId": "2",
+      "eventTitle": "Lakers vs Warriors",
+      "selection": "home",
+      "odds": 1.85,
+      "stake": 10,
+      "placedAt": "2025-10-15T14:53:52.418Z"
+    },
+    {
+      "id": "6",
+      "eventId": "1",
+      "eventTitle": "Manchester United vs Liverpool",
+      "selection": "home",
+      "odds": 1.59,
+      "stake": 10,
+      "placedAt": "2025-10-15T14:53:52.418Z"
+    },
+    {
+      "id": "7",
+      "eventId": "1",
+      "eventTitle": "Manchester United vs Liverpool",
+      "selection": "away",
+      "odds": 3.21,
+      "stake": 10,
+      "placedAt": "2025-10-15T15:23:41.332Z"
+    },
+    {
+      "id": "9",
+      "eventId": "2",
+      "eventTitle": "Lakers vs Warriors",
+      "selection": "home",
+      "odds": 1.85,
+      "stake": 10,
+      "placedAt": "2025-10-15T15:23:41.332Z"
+    }
+  ]
 }

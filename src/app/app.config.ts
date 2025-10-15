@@ -9,15 +9,15 @@ import { provideEffects } from '@ngrx/effects';
 import { routes } from './app.routes';
 import { reducers } from './store/reducers/index';
 import { effects } from './store/effects/index';
+import { metaReducers } from './store/meta-reducers/local-storage.meta-reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideRouter(routes),
-    provideAnimations(),
     provideHttpClient(),
-    provideStore(reducers),
+    provideStore(reducers, { metaReducers }),
     provideEffects(effects),
     provideStoreDevtools({
       maxAge: 25,

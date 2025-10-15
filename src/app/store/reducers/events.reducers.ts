@@ -11,10 +11,8 @@ export const eventsReducer = createReducer(
         events: events,
         loading: false 
     })),
-    on(EventsActions.loadEventsFailure, (state, { error }) => ({ ...state, error, loading: false })),
     on(EventsActions.loadEventById, (state) => ({ ...state, loading: true, error: null })),
     on(EventsActions.loadEventByIdSuccess, (state, { event }) => ({ ...state, selectedEvent: event, loading: false })),
-    on(EventsActions.loadEventByIdFailure, (state, { error }) => ({ ...state, error, loading: false })),
     on(EventsActions.oddsUpdated, (state, { eventId, newOdds }) => ({
         ...state,
         events: state.events.map(event => 
@@ -28,12 +26,9 @@ export const eventsReducer = createReducer(
             ? state.events.map(e => e.id === event.id ? event : e) 
             : [...state.events, event],
         loading: false 
-    })),
-    on(EventsActions.createEventFailure, (state, { error }) => ({ ...state, error, loading: false })),
+    })), 
     on(EventsActions.deleteEvent, (state) => ({ ...state, loading: true, error: null })),
     on(EventsActions.deleteEventSuccess, (state, { id }) => ({ ...state, events: state.events.filter(e => e.id !== id), loading: false })),
-    on(EventsActions.deleteEventFailure, (state, { error }) => ({ ...state, error, loading: false })),
     on(EventsActions.updateEvent, (state) => ({ ...state, loading: true, error: null })),
-    on(EventsActions.updateEventSuccess, (state, { event }) => ({ ...state, events: state.events.map(e => e.id === event.id ? event : e), loading: false })),
-    on(EventsActions.updateEventFailure, (state, { error }) => ({ ...state, error, loading: false }))
+    on(EventsActions.updateEventSuccess, (state, { event }) => ({ ...state, events: state.events.map(e => e.id === event.id ? event : e), loading: false }))
 );

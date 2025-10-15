@@ -16,7 +16,6 @@ import * as EventsActions from '../../store/actions/events.actions';
 import { selectEvents, selectEventsLoading, selectEventsError } from '../../store/selectors/events.selectors';
 import { BetslipComponent } from '../../components/betslip/betslip.component';
 import { BetHistoryComponent } from '../../components/bet-history/bet-history.component';
-import { BetsService } from '../../services/bets.service';
 
 @Component({
   selector: 'app-events-list',
@@ -37,7 +36,6 @@ export class EventsList implements OnInit {
   private readonly store = inject(Store<AppState>);
   private readonly router = inject(Router);
   private readonly dialog = inject(MatDialog);
-  private readonly betsService = inject(BetsService);
 
   // Convert store observables directly to signals
   readonly events = toSignal(this.store.select(selectEvents), { initialValue: [] });

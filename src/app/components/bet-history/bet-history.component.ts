@@ -11,7 +11,7 @@ import { Bet } from '../../models/bet.model';
 import { DateUtilityService } from '../../services/date-utility.service';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/app.state';
-import { selectBets, selectBetsLoading } from '../../store/selectors/bet.selectors';
+import { selectBets } from '../../store/selectors/bet.selectors';
 import * as BetActions from '../../store/actions/bet.actions';
 import { toSignal } from '@angular/core/rxjs-interop';
 
@@ -49,22 +49,20 @@ export class BetHistoryComponent implements OnInit {
 
   // NgRx signals
   readonly bets = toSignal(this.store.select(selectBets), { initialValue: [] });
-  readonly loading = toSignal(this.store.select(selectBetsLoading), { initialValue: false });
 
   constructor() {
     // Watch for changes in bets signal and process them
     effect(() => {
       const currentBets = this.bets();
       console.log('Bet history effect triggered, bets count:', currentBets.length);
-      if (currentBets.length > 0) {
-        this.processBets(currentBets);
-      }
+      
+      // Process bets regardless of length (handles both populated and empty arrays)
+      this.processBets(currentBets);
     });
   }
 
   ngOnInit(): void {
-    // Load bets from store
-    this.store.dispatch(BetActions.loadBets());
+    // Bets are automatically loaded from localStorage via meta-reducer
   }
 
   private processBets(bets: Bet[]): void {
@@ -94,18 +92,14 @@ export class BetHistoryComponent implements OnInit {
     return this.dateUtility.formatDate(dateString);
   }
 
-  clearHistory(): void {
-    // Show confirmation dialog or just clear directly
-    if (confirm('Are you sure you want to clear all bet history? This action cannot be undone.')) {
-      this.store.dispatch(BetActions.clearBetslip());
-      this.resetHistory();
+    clearHistory(): void {
+        // Show confirmation dialog
+        if (confirm('Are you sure you want to clear all bet history? This action cannot be undone.')) {
+            // Dispatch action to clear bets from store only
+            this.store.dispatch(BetActions.clearBetslip());
+            // The component will automatically update via the effect() that watches bets signal
+        }
     }
-  }
-
-  private resetHistory(): void {
-    this.betHistory.set([]);
-    this.calculateStatistics([]);
-  }
 
   close(): void {
     this.dialogRef.close();

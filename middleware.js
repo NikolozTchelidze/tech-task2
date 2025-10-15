@@ -104,46 +104,6 @@ module.exports = (req, res, next) => {
 
   // Add validation for POST/PUT requests
   if (req.method === 'POST' || req.method === 'PUT') {
-    // Handle bet validation
-    if (req.url.includes('/bets')) {
-      const bet = req.body;
-      
-      // Validate required fields for bets
-      const requiredFields = ['eventId', 'eventTitle', 'selection', 'odds', 'stake'];
-      const missingFields = requiredFields.filter(field => !bet[field]);
-      
-      if (missingFields.length > 0) {
-        return res.status(400).json({
-          error: 'Validation failed',
-          message: `Missing required fields: ${missingFields.join(', ')}`
-        });
-      }
-
-      // Validate selection
-      const validSelections = ['home', 'draw', 'away'];
-      if (!validSelections.includes(bet.selection)) {
-        return res.status(400).json({
-          error: 'Validation failed',
-          message: `Invalid selection. Must be one of: ${validSelections.join(', ')}`
-        });
-      }
-
-      // Validate odds
-      if (bet.odds < 1.01 || bet.odds > 100) {
-        return res.status(400).json({
-          error: 'Validation failed',
-          message: 'Odds must be between 1.01 and 100'
-        });
-      }
-
-      // Validate stake
-      if (bet.stake <= 0) {
-        return res.status(400).json({
-          error: 'Validation failed',
-          message: 'Stake must be greater than 0'
-        });
-      }
-    }
 
     if (req.url.includes('/events')) {
       const event = req.body;
@@ -259,24 +219,6 @@ module.exports = (req, res, next) => {
         event.isLive = event.status === 'live';
       }
 
-      if (req.method === 'POST' && req.url.includes('/bets')) {
-        // Generate unique ID for bet
-        const fs = require('fs');
-        const path = require('path');
-        const dbPath = path.join(__dirname, 'db.json');
-        
-        try {
-          const dbData = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
-          const existingIds = dbData.bets.map(b => parseInt(b.id)).filter(id => !isNaN(id));
-          const maxId = existingIds.length > 0 ? Math.max(...existingIds) : 0;
-          req.body.id = (maxId + 1).toString();
-        } catch (error) {
-          req.body.id = Date.now().toString();
-        }
-
-        // Add timestamp
-        req.body.placedAt = new Date().toISOString();
-      }
 
      
   }
@@ -293,6 +235,7 @@ module.exports = (req, res, next) => {
       return originalSend.call(this, JSON.stringify(response));
     };
   }
+
 
   next();
 }};

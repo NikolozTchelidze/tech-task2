@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
@@ -8,14 +8,13 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatChipsModule } from '@angular/material/chips';
 import { AppState } from '../../store/app.state';
 import { Store } from '@ngrx/store';
-import { Subject, takeUntil, map, switchMap } from 'rxjs';
+import { map } from 'rxjs';
 import { Event, EventStatus, SportType } from '../../models/event.model';
-import { selectSelectedEvent, selectEventsLoading, selectEventsError } from '../../store/selectors/events.selectors';
+import { selectSelectedEvent } from '../../store/selectors/events.selectors';
 import { ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { EventsService } from '../../services/events.service';
 import * as EventsActions from '../../store/actions/events.actions';
 import { Bet } from '../../models/bet.model';
-import { BetsService } from '../../services/bets.service';
 import { DateUtilityService } from '../../services/date-utility.service';
 
 @Component({
